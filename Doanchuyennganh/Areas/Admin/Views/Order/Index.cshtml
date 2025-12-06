@@ -1,0 +1,69 @@
+﻿@model IEnumerable<OderModel>
+@{
+    ViewData["title"] = "Order Listed";
+}
+<h3>List Order</h3>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Order Code</th>
+            <th>Shipping Cost</th>
+            <th>Coupon Code</th>
+            <th>UserName</th>
+            <th>Order Status</th>
+            <th>Payment Method</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <th>@item.OrderCode</th>
+                <th>@item.ShippingCost.ToString("#,##0 VNĐ")</th>
+                <th>@item.CouponCode</th>
+
+                <td>@item.UserName</td>
+
+                <td>
+                    @if (@item.Status == 1)
+                    {
+                        <span class="text text-success">Đơn hàng mới</span>
+                    }
+                    else if (@item.Status == 2)
+                    {
+                        <span class="text-area text-primary">Đã xử lý</span>
+                    }
+                    else
+                    {
+                        <span class="text-area text-danger">Đã hủy</span>
+                    }
+
+                </td>
+                <td>
+
+                    @if (item.PaymentMethod == "COD")
+                    {
+                        <span class="text text-primary">@item.PaymentMethod</span>
+                    }
+                    else if (item.PaymentMethod != "COD")
+                    {
+                        <span class="text text-danger">@item.PaymentMethod</span>
+                    }
+                </td>
+                <td>@item.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+
+                <td>
+                    <a asp-action="ViewOrder" class="btn btn-warning btn-sm" asp-controller="Order" asp-route-ordercode="@item.OrderCode">View Order</a>
+                    <a asp-action="Delete" class="btn btn-danger btn-sm confirmDeletion" asp-controller="Order" asp-route-ordercode="@item.OrderCode">Delete</a>
+
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

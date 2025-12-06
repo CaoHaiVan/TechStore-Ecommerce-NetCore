@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ProductModel>
+@{
+	ViewData["Title"] = "Sản phẩm theo Thương hiệu";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-3">
+	<partial name="_SidebarPartial" />
+</div>
+
+<div class="col-sm-9 padding-right">
+	<partial name="_FilterProductsPartial" />
+	<div class="features_items">
+		<!--features_items-->
+		@* <h2 class="title text-center">Sản phẩm theo Thương hiệu</h2> *@
+		<h2 class="title text-center">@ViewBag.BrandName</h2>
+
+		@foreach (var item in Model)
+		{
+			<div class="col-sm-4">
+				<div class="product-image-wrapper">
+					<div class="single-products">
+						<div class="productinfo text-center">
+							<a asp-action="Details" asp-controller="Product" asp-route-Id="@item.Id">
+							<img src="~/media/products/@item.Image" alt="@item.Name" width="100%" />
+							<h2>@item.Price.ToString("#,##0 VNĐ")</h2>
+							<p>@item.Name</p>
+							<p>Danh mục : @item.Category.Name</p>
+							<p>Thương hiệu : @item.Brand.Name</p>
+							</a>
+							@if (item.Quantity > 0)
+							{
+								<a class="btn btn-default add-to-cart" asp-action="Add" asp-controller="Cart" asp-route-Id="@item.Id">
+									<i class="fa fa-shopping-cart"></i>Thêm giỏ hàng
+								</a>
+							}
+							else
+							{
+								<button class="btn btn-default"> <i class="fa fa-shopping-cart"></i> Hết hàng</button>
+							}
+						</div>
+					</div>
+
+					@* <div class="choose">
+						<ul class="nav nav-pills nav-justified">
+							<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+							<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+						</ul>
+					</div> *@
+				</div>
+			</div>
+		}
+	</div><!--features_items-->
+</div>
+
+@section Scripts {
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			// --- Slider lọc giá ---
+			$("#slider-range").slider({
+				range: true,
+				step: 100000,
+				min: 1000000,
+				max: 100000000,
+				values: [1000000, 40000000],
+				slide: function (event, ui) {
+					$("#amount").val(
+						new Intl.NumberFormat("vn-VN", { style: "currency", currency: "VND" }).format(ui.values[0])
+						+ " - "
+						+ new Intl.NumberFormat("vn-VN", { style: "currency", currency: "VND" }).format(ui.values[1])
+					);
+				}
+			});
+
+			$("#amount").val(
+				new Intl.NumberFormat("vn-VN", { style: "currency", currency: "VND" }).format($("#slider-range").slider("values", 0))
+				+ " - "
+				+ new Intl.NumberFormat("vn-VN", { style: "currency", currency: "VND" }).format($("#slider-range").slider("values", 1))
+			);
+
+			// --- Nút Lọc giá ---
+			$('.btn-locgia').on('click', function () {
+				var url = $(this).data("current_url");
+				if (url) {
+					window.location = url + "?startprice=" + $("#slider-range").slider("values", 0)
+						+ "&endprice=" + $("#slider-range").slider("values", 1);
+				}
+				return false;
+			});
+
+			// --- Dropdown Sắp xếp ---
+			$('#sort_by').on('change', function () {
+				var url = $(this).val();
+				if (url) {
+					window.location = url;
+				}
+				return false;
+			});
+		});
+	</script>
+}

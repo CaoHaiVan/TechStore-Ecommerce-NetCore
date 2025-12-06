@@ -1,0 +1,95 @@
+﻿<style>
+    /* --- Vùng chứa toàn bộ widget --- */
+    #chatbot-widget {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    /* --- Iframe Chatbot --- */
+    #chatbot-frame {
+        width: 420px;
+        height: 600px;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+        transform: translateY(30px);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.35s ease;
+    }
+
+        /* Khi bật chatbot */
+        #chatbot-frame.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+    /* --- Nút bật/tắt --- */
+    #chatbot-toggle-btn {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #5a4bcf, #7e68ff);
+        color: #fff;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        transition: all 0.25s ease;
+    }
+
+        #chatbot-toggle-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #6b5df5, #8d7fff);
+        }
+
+    /* --- Giao diện di động --- */
+    @@media (max-width: 520px) {
+        #chatbot-frame {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        #chatbot-widget {
+            right: 15px;
+            bottom: 15px;
+        }
+    }
+</style>
+
+<div id="chatbot-widget">
+    <iframe id="chatbot-frame" src="/chatbot/index.html"></iframe>
+    <button id="chatbot-toggle-btn" title="Trò chuyện với AI">💬</button>
+</div>
+
+<script>
+    const chatbotFrame = document.getElementById('chatbot-frame');
+    const chatbotBtn = document.getElementById('chatbot-toggle-btn');
+
+    chatbotBtn.addEventListener('click', () => {
+        chatbotFrame.classList.toggle('active');
+
+        // Đổi icon khi bật/tắt
+        // if (chatbotFrame.classList.contains('active')) {
+        //     chatbotBtn.textContent = '✖'; // Đóng
+        // } else {
+        //     chatbotBtn.textContent = '💬'; // Mở
+        // }
+    });
+</script>

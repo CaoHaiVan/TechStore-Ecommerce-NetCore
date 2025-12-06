@@ -1,0 +1,39 @@
+﻿@using Doanchuyennganh.Models.Vnpay;
+@model PaymentResponseModel
+
+@{
+    ViewData["Title"] = "Kết quả giao dịch VNPAY";
+}
+
+<div style="max-width: 750px; margin: 40px auto; padding: 30px;
+            background: #fff; border-radius: 14px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.12); font-family: Arial;">
+
+    <div style="text-align:center; margin-bottom: 20px;">
+        <div style="font-size: 50px; color: #2e7d32;">✔</div>
+        <h2 style="color:#2e7d32; margin-bottom: 5px;">Thanh toán VNPAY thành công</h2>
+        <p style="color:#555; font-size: 15px;">
+            Cảm ơn bạn đã thanh toán tại <strong>VanShopper</strong>.
+        </p>
+    </div>
+
+    <hr style="margin: 25px 0;" />
+
+    <div style="font-size: 16px; color:#444; line-height: 1.7;">
+        <p><strong>Mã đơn hàng:</strong> @Model.OrderId</p>
+        <p><strong>Mô tả giao dịch:</strong> @Model.OrderDescription</p>
+        @* <p><strong>Tổng tiền:</strong> @Model.Amount.ToString("N0") VNĐ</p> *@
+        <p><strong>Mã giao dịch:</strong> @Model.TransactionId</p>
+        <p><strong>Mã thanh toán:</strong> @Model.PaymentId</p>
+        <p><strong>Phương thức:</strong> @Model.PaymentMethod</p>
+    </div>
+
+    <div style="text-align:center; margin-top: 30px;">
+        <a asp-controller="Account" asp-action="History"
+           style="padding: 12px 25px; background:#2e7d32; color:white;
+                  border-radius: 8px; text-decoration:none; font-size:16px;">
+            Xem lịch sử đơn hàng →
+        </a>
+    </div>
+
+</div>

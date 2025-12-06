@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["title"] = "Danh sách yêu thích";
+    var key = 0;
+}
+
+<h3 class="text-center mt-4 mb-4 fw-bold text-primary">💖 Danh sách yêu thích</h3>
+
+<table class="table table-hover table-bordered shadow-sm rounded-3" id="myTable">
+    <thead class="table-primary text-center">
+        <tr>
+            <th>#</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Hình ảnh</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+
+    <tbody class="align-middle">
+        @foreach (var wishlist_product in Model)
+        {
+            key++;
+            var productId = wishlist_product.Product.Id;
+
+            <tr>
+                <td class="text-center fw-bold">@key</td>
+
+                <td>
+                    <a class="text-decoration-none fw-semibold text-dark"
+                       asp-action="Details" asp-controller="Product" asp-route-id="@productId">
+                        @wishlist_product.Product.Name
+                    </a>
+                </td>
+
+                <td class="text-danger fw-semibold">
+                    @wishlist_product.Product.Price.ToString("#,##0 VNĐ")
+                </td>
+
+                <td class="text-center">
+                    <a asp-action="Details" asp-controller="Product" asp-route-id="@productId">
+                        <img src="~/media/products/@wishlist_product.Product.Image"
+                             class="img-thumbnail shadow-sm"
+                             style="width: 120px; height: 150px; object-fit: cover;" />
+                    </a>
+                </td>
+
+                <td class="text-center">
+                    <a asp-action="DeleteWishlist"
+                       asp-controller="Home"
+                       asp-route-Id="@wishlist_product.Wishlist.Id"
+                       class="btn btn-outline-danger btn-sm confirmDeletion">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

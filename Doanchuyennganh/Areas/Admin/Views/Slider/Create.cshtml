@@ -1,0 +1,65 @@
+﻿@model SliderModel
+@{
+    ViewData["title"] = "Create Slider";
+}
+<h4>Create Slider</h4>
+<div class="col-md-9">
+    <form asp-action="Create" asp-controller="Slider" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label>Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger" />
+        </div>
+      
+        <div class="form-group">
+            <label>Description</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger" />
+        </div>
+     
+        <div class="form-group">
+            <label>Status</label>
+            <select asp-for="Status" class="form-control">
+                <option value="1">Hiển thị</option>
+                <option value="0">Ẩn</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Image</label>
+            <input asp-for="ImageUpload" class="form-control-file" />
+            <span asp-validation-for="ImageUpload" class="text-danger" />
+            <img id="imgpreview" class="pt-2" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Create</button>
+        </div>
+    </form>
+    <a asp-action="Index">Back to list slider</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        $("#ImageUpload").change(function () {
+            readURL(this);
+        })
+    </script>
+    <script>
+        CKEDITOR.replace('Description');
+    </script>
+
+
+    <!-- Nang cap phien ban cheditor accesskey=" -->"
+    <!-- CKEditor 5 -->
+    @* <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('textarea[name="Description"]'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script> *@
+}

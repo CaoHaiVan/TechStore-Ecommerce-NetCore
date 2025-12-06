@@ -1,0 +1,88 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<section id="">
+	<!--form-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-1">
+				<div class="login-form">
+					<!--login form-->
+					<h2>Login to your account</h2>
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<form asp-action="Login" asp-controller="Account">
+
+						<div class="form-group">
+							<label>Username</label>
+							<input asp-for="Username" class="form-control" />
+							<span asp-validation-for="Username" class="text-danger" />
+						</div>
+						
+						<div class="form-group">
+							<label>Password</label>
+							<input asp-for="Password" class="form-control" />
+							<span asp-validation-for="Password" class="text-danger" />
+						</div>
+                        <div class="d-flex justify-content-center align-items-center mt-3 flex-wrap gap-3 button-group">
+                            <button type="submit" class="btn btn-warning custom-btn">Login</button>
+                            <a asp-action="LoginByGoogle" asp-controller="Account" class="btn btn-outline-danger custom-btn">Đăng nhập bằng Google</a>
+                            <a asp-action="Create" asp-controller="Account" class="btn btn-outline-primary custom-btn">Tạo tài khoản mới</a>
+                            <a asp-action="ForgetPass" asp-controller="Account" class="btn btn-outline-secondary custom-btn">Quên mật khẩu</a>
+                        </div>
+
+					</form>
+				</div><!--/login form-->
+			</div>
+			
+			
+		</div>
+	</div>
+
+    <style>
+        .button-group {
+            text-align: center;
+        }
+
+        .custom-btn {
+            font-weight: 600;
+            border-radius: 8px !important;
+            padding: 8px 20px !important;
+            min-width: 180px; /* các nút có cùng chiều dài, gọn gàng */
+            text-align: center;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.25s ease-in-out;
+        }
+
+        /* Giữ nút Login cùng độ cao và căn giữa */
+        .btn-warning {
+            color: #fff !important;
+            border: none !important;
+        }
+
+        /* Hover effect */
+        .btn-outline-danger:hover {
+            background-color: #dc3545 !important;
+            color: #fff !important;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #0d6efd !important;
+            color: #fff !important;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d !important;
+            color: #fff !important;
+        }
+    </style>
+
+</section><!--/form-->
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+}

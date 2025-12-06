@@ -1,0 +1,46 @@
+﻿@model ContactModel
+<div class="row">
+	
+	<div class="col-sm-3">
+		<div class="companyinfo">
+			<h2><span>van</span>-shopper</h2>
+			<p><img src="~/media/logo/@Model.LogoImg" width="180px" height="120px" /></p> 
+			<p>@Html.Raw(@Model.Description)</p>
+			
+		</div>
+	</div>
+		<div class="col-sm-5 col-md-5">
+		@Html.Raw(@Model.Map) 
+		</div>
+
+		<div class="col-sm-4">
+			<div class="address">
+				<h5>Name: @Model.Name</h5>
+				<h5>Email: @Model.Email</h5>
+				<h5>@Model.Phone</h5>
+			<div class="fb-page"
+				 data-href="https://www.facebook.com/profile.php?id=61564531051592"
+				 data-tabs="message"
+				 data-width="280"
+				 data-height="70"
+				 data-small-header="false"
+				 data-adapt-container-width="true"
+				 data-hide-cover="false"
+				 data-show-facepile="true">
+				<blockquote cite="https://www.facebook.com/profile.php?id=61564531051592" class="fb-xfbml-parse-ignore">
+					<a href="https://www.facebook.com/profile.php?id=61564531051592">Học Hỏi Thêm Về Công Nghệ</a>
+				</blockquote>
+			</div>
+
+			</div>
+		</div>
+
+	@* </div>
+	<div class="col-sm-3">
+		<div class="address">
+			<img src="images/home/map.png" alt="" />
+			<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+		</div>
+	</div> *@
+	
+</div>

@@ -1,0 +1,95 @@
+﻿@{
+    var orderDetails = ViewBag.OrderDetails as List<Doanchuyennganh.Models.OderDetails>;
+}
+
+<h3>Lịch sử đơn hàng của @ViewBag.UserEmail</h3>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>Mã đơn hàng</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thanh toán</th>
+            <th>Ngày đặt</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            var details = orderDetails.Where(d => d.OrderCode == order.OrderCode).ToList();
+
+            if (details.Any())
+            {
+                foreach (var item in details)
+                {
+                    <tr>
+                        <td>@order.OrderCode</td>
+                        <td>
+                            @if (item.Product != null)
+                            {
+                                <div class="d-flex align-items-center">
+                                   @*  <img src="~/images/products/@item.Product.Image" width="60" class="me-2" /> *@
+                                    <span>@item.Product.Name</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <span>Không có sản phẩm</span>
+                            }
+                        </td>
+                        <td>@item.Price.ToString("N0") ₫</td>
+                        <td>@item.Quantity</td>
+                        <td>
+                            @if (order.PaymentMethod == "COD")
+                            {
+                                <span class="badge bg-primary">COD</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">@order.PaymentMethod</span>
+                            }
+                        </td>
+                        <td>@order.CreatedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            @if (order.Status == 1)
+                            {
+                                <span class="badge bg-warning text-dark">Đơn hàng mới</span>
+                            }
+                            else if (order.Status == 2)
+                            {
+                                <span class="badge bg-success">Đã xử lý</span>
+                            }
+                            else if (order.Status == 3)
+                            {
+                                <span class="badge bg-danger">Đã hủy</span>
+                            }
+
+                        </td>
+                        <td>
+                            @if (order.Status == 1)  
+{
+    <a asp-action="CancelOrder"
+       asp-controller="Account"
+       asp-route-ordercode="@order.OrderCode"
+       onclick="return confirm('Xác nhận hủy đơn hàng này?')"
+       class="btn btn-sm btn-danger">Hủy đơn</a>
+}
+
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>@order.OrderCode</td>
+                    <td colspan="7" class="text-muted">Không có chi tiết sản phẩm</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

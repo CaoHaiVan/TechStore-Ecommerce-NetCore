@@ -1,0 +1,51 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.cache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/
+
+# ASP.NET publish output
+wwwroot/dist/
+wwwroot/lib/
+
+# Logs
+*.log
+
+# Environment-specific appsettings
+appsettings.Development.json
+appsettings.Local.json
+
+# Secrets folder
+secrets.json
+
+# Node modules
+node_modules/
+
+# Backup files
+*.bak
+*.tmp
+
+# Others
+Thumbs.db
+Desktop.ini
+
+# JetBrains Rider
+.idea/
+
+# Publish profiles
+Properties/PublishProfiles/
+
+# Docker stuff
+**/Dockerfile*
+**/docker-compose*

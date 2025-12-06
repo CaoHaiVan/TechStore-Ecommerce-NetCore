@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Danh sách so sánh";
+    var key = 0;
+}
+
+<h2 class="mb-4 text-center fw-bold">🛒 Danh Sách Sản Phẩm So Sánh</h2>
+
+<div class="card shadow-sm p-3">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle" id="compareTable">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>#</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Hình ảnh</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var compare_product in Model)
+                {
+                    key++;
+                    <tr class="text-center">
+                        <td class="fw-bold">@key</td>
+
+                        <td class="text-start">
+                            <a asp-action="Details"
+                               asp-controller="Product"
+                               asp-route-id="@compare_product.Product.Id"
+                               class="text-decoration-none fw-semibold text-primary">
+                                @compare_product.Product.Name
+                            </a>
+                        </td>
+
+                        <td class="fw-semibold text-danger">
+                            @compare_product.Product.Price.ToString("#,##0 VNĐ")
+                        </td>
+
+                        <td>
+                            <a asp-action="Details" asp-controller="Product"
+                               asp-route-id="@compare_product.Product.Id">
+                                <img src="~/media/products/@compare_product.Product.Image"
+                                     style="width:110px; height:140px; object-fit:cover; border-radius:8px;"
+                                     class="shadow-sm border" />
+                            </a>
+                        </td>
+
+                        <td>
+                            <a asp-action="DeleteCompare"
+                               asp-controller="Home"
+                               asp-route-id="@compare_product.Compares.Id"
+                               class="btn btn-danger btn-sm px-3 confirmDeletion">
+                                <i class="bi bi-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .btn-danger:hover {
+        background-color: #c82333 !important;
+        transform: scale(1.05);
+        transition: 0.2s;
+    }
+
+    #compareTable tbody tr:hover {
+        background: #f0f8ff !important;
+        transition: 0.2s;
+    }
+</style>
