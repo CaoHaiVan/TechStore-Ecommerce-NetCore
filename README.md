@@ -1,200 +1,291 @@
-🚀 TechStore – Modern Ecommerce Platform (ASP.NET Core MVC)
+# 🚀 TechStore – Full-Featured Ecommerce Platform
 
-TechStore is a modern, high-performance eCommerce web application built on ASP.NET Core MVC, providing a seamless shopping experience with secure online payments, real-time order processing, and a powerful admin management system.
+TechStore is a full-featured ecommerce web application developed as a Graduation Thesis project using ASP.NET Core MVC and SQL Server.
 
-This project was developed as a graduation thesis, focusing on building a fully functional, production-ready eCommerce solution with clean architecture, optimized data flow, and real business workflows.
+The system provides a complete online shopping experience for technology products, including product browsing, shopping cart management, online payment integration, order tracking, coupon management, product comparison, wishlist functionality, and an administrative dashboard for business operations.
 
-⭐ Key Highlights
+---
 
-Full-featured ecommerce platform with real-world business logic
+## 📌 Project Overview
 
-Integrated online payment gateways (MoMo & VNPAY)
+TechStore was designed to simulate a real-world ecommerce workflow and help administrators efficiently manage products, orders, customers, promotions, inventory, and revenue statistics.
 
-High-performance backend with ASP.NET Core MVC
+The project focuses on:
 
-Centralized admin dashboard to manage products, categories, orders & customers
+* Clean MVC architecture
+* Secure authentication & authorization
+* Online payment integration
+* Inventory management
+* Business reporting & analytics
+* Responsive user experience
 
-Scalable database architecture using SQL Server + Entity Framework Core
+---
 
-Friendly, responsive UI built with Bootstrap
+## 🛠️ Technologies Used
 
-Clean architecture for easy maintenance and extensibility
+### Backend
 
-🛒 Core Features
-Customer Features
+* ASP.NET Core MVC
+* C#
+* Entity Framework Core
+* LINQ
+* SQL Server
 
-Browse products by category, brand, or search
+### Frontend
 
-View product details with images & pricing
+* Razor Views
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
+* jQuery
+* AJAX
 
-Add/remove/update items in shopping cart
+### Authentication & Security
 
-Apply discount codes (percentage-based coupons)
+* ASP.NET Identity
+* Cookie Authentication
+* Role-Based Authorization
 
-Checkout with:
+### Payment Gateway
 
-Cash on Delivery (COD)
+* VNPay
+* Cash On Delivery (COD)
 
-MoMo online payment
+### Development Tools
 
-VNPAY online payment
+* Visual Studio 2022
+* Git
+* GitHub
+* SQL Server Management Studio (SSMS)
 
-Track order history and status
+---
 
-Responsive experience across devices
+## 👨‍💻 Customer Features
 
-Admin Features
+### Account Management
 
-Secure admin login & session management
+* User Registration
+* User Login / Logout
+* Change Password
+* Forgot Password
+* Profile Management
 
-Product Management (CRUD, hide/unhide, image upload)
+### Product Features
 
-Category & Brand Management
+* Browse Products
+* Search Products
+* Filter by Category
+* Filter by Brand
+* Filter by Price Range
+* View Product Details
 
-Order Management (view, update status, cancel, delete)
+### Shopping Features
 
-Slider Management (homepage banners)
+* Shopping Cart
+* Update Cart Quantity
+* Remove Items from Cart
+* Wishlist
+* Product Comparison
+* Apply Discount Coupons
 
-Shipping Fee Management by location
+### Order & Payment
 
-Coupon Management (discount %, expiry, usage limit)
+* Checkout Process
+* Cash On Delivery (COD)
+* VNPay Online Payment
+* Order History
+* Order Tracking
+* Order Cancellation
 
-User Management
+### Customer Interaction
 
-Dashboard with system overview (products, orders, revenue trends…)
+* Product Reviews & Ratings
+* Contact & Support Requests
 
-🧱 Architecture Overview
+---
 
-TechStore follows a clean and maintainable architecture:
+## 🔐 Admin Features
 
-ASP.NET Core MVC for frontend + backend
+### Product Management
 
-Entity Framework Core for ORM
+* Create Product
+* Update Product
+* Delete Product
+* Inventory Management
+* Product Image Management
 
-SQL Server as the relational database
+### Category & Brand Management
 
-Layered structure:
+* Manage Categories
+* Manage Brands
 
-Controllers
+### Order Management
 
-Services
+* View Orders
+* Update Order Status
+* Cancel Orders
+* Manage Shipping Information
 
-Repositories
+### Promotion Management
 
-Views (Razor)
+* Coupon Management
+* Discount Campaigns
 
-Models (Domain & ViewModels)
+### Website Content Management
 
-Authentication using Cookies / Custom Auth
+* Slider/Banner Management
+* Contact Information Management
 
-Clean routing & modular structure
+### User & Role Management
 
-🗄️ Database Design
+* User Management
+* Role Management
+* Authorization Control
 
-Main tables include:
+### Business Analytics
 
-Users
+* Revenue Statistics
+* Order Reports
+* Product Reports
+* Customer Statistics
 
-Products
+---
 
-Categories
+## 🗄️ Database Design
 
-Brands
+Main entities include:
 
-Orders
+* Users
+* Roles
+* Products
+* Categories
+* Brands
+* Orders
+* OrderDetails
+* Coupons
+* Shipping
+* Ratings
+* Wishlist
+* Compare
+* Contacts
+* Sliders
+* VNPay Transactions
 
-OrderDetails
+The database is designed with relational integrity, foreign keys, and Entity Framework Core ORM for efficient data management.
 
-Coupons
+---
 
-ShippingFees
+## 🏗️ Architecture
 
-Sliders
+The application follows the ASP.NET Core MVC architecture:
 
-Designed with referential integrity, foreign keys, and optimized indexing to ensure high performance under real workloads.
+* Models
+* Views
+* Controllers
+* Entity Framework Core
+* Dependency Injection
+* Middleware Pipeline
+* Repository-Oriented Structure
 
-🛠️ Tech Stack
-Technology	Purpose
-ASP.NET Core MVC	Main backend + frontend framework
-Entity Framework Core	ORM and database communication
-SQL Server	Primary relational database
-Bootstrap 5	UI/UX frontend framework
-jQuery + AJAX	Dynamic interactions & async operations
-MoMo Payment	Online payment gateway
-VNPAY Payment	Secure VN payment gateway
-LINQ	Data querying
-Identity / Cookies	Authentication
-⚙️ Installation & Setup
-Requirements
+This architecture improves maintainability, scalability, and code organization.
 
-Visual Studio 2022
+---
 
-.NET 7 / .NET 8 SDK
+## 🎯 Key Technical Skills Demonstrated
 
-SQL Server + SSMS
+* ASP.NET Core MVC
+* Entity Framework Core
+* SQL Server
+* Authentication & Authorization
+* Role-Based Access Control
+* Payment Gateway Integration
+* Session-Based Shopping Cart
+* CRUD Operations
+* LINQ Querying
+* AJAX Interactions
+* MVC Architecture
+* Database Design
+* Responsive Web Design
 
-Git
+---
 
-Setup Steps
+## 📸 Screenshots
 
-Clone the repository:
+### Home Page
 
+(Add screenshot here)
+
+### Product Detail Page
+
+(Add screenshot here)
+
+### Shopping Cart
+
+(Add screenshot here)
+
+### Checkout Page
+
+(Add screenshot here)
+
+### Admin Dashboard
+
+(Add screenshot here)
+
+---
+
+## ⚙️ Installation
+
+### Requirements
+
+* Visual Studio 2022
+* .NET 8 SDK
+* SQL Server
+* SSMS
+
+### Setup
+
+```bash
 git clone https://github.com/CaoHaiVan/TechStore-Ecommerce-NetCore.git
+```
 
+Update connection string in:
 
-Open the solution file:
+```json
+appsettings.json
+```
 
-TechStore-Ecommerce-NetCore.sln
+Run migrations:
 
+```powershell
+Update-Database
+```
 
-Update your database connection in:
+Run the application:
 
-appsettings.Development.json
+```powershell
+dotnet run
+```
 
+---
 
-Run migrations (if applicable)
+## 🚀 Future Improvements
 
-Press F5 to run on IIS Express or Kestrel
+* AI Product Recommendation
+* Real-Time Notifications (SignalR)
+* Multi-Language Support
+* Mobile Application
+* RESTful API Version
+* Microservices Architecture
 
-💳 Payment Gateways
-MoMo
+---
 
-Integrated via sandbox API
+## 👤 Author
 
-Secure encrypted payment URL
+Cao Hai Van
 
-Callback handled through:
+Bachelor of Information Technology
 
-/Checkout/PaymentCallback
+Graduation Thesis Project – 2026
 
-VNPAY
-
-Uses signed & encoded payment requests
-Callback:
-/Checkout/PaymentCallbackVnpay
-Both gateways emulate real-world ecommerce transaction flows.
-🖥️ User Interface Preview
-
-(You can add images here later, e.g. Home page, Product list, Admin Dashboard)
-
-🚀 Future Enhancements
-
-AI-powered product recommendations
-
-Customer reviews & ratings
-
-SEO optimization for product ranking
-
-Multi-language support
-
-Real-time order notifications using SignalR
-
-Mobile application integration
-
-Microservices architecture (Product API / Order API / Auth API)
-
-👨‍💻 Author
-
- Cao Hai Van
-Graduation Thesis — 2025
-Tech major: Software Engineering / Information Technology
+Nguyen Tat Thanh University
